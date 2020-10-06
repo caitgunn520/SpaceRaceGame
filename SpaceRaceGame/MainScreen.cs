@@ -31,7 +31,7 @@ namespace SpaceRaceGame
         private void quitButton_Click(object sender, EventArgs e)
         {
             //quit program
-
+            Application.Exit();
         }
     }
 }

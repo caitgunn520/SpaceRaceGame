@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
 
 namespace SpaceRaceGame
 {
@@ -17,6 +18,10 @@ namespace SpaceRaceGame
             downArrowDown, rightArrowDown;
 
         Random asterPosGen = new Random();
+
+        //sound effect players
+        SoundPlayer collideSound = new SoundPlayer(Properties.Resources.collision_sound_effect);
+        SoundPlayer winSound = new SoundPlayer(Properties.Resources.win_sound_effect);
         
         List<Player> playerList = new List<Player>();
         List<Asteroid> leftAsterList = new List<Asteroid>();
@@ -208,12 +213,14 @@ namespace SpaceRaceGame
                     {
                         player1.x = 138;
                         player1.y = 400;
+                        collideSound.Play();
                     }
 
                     if (asterRec.IntersectsWith(player2Rec))
                     {
                         player2.x = 414;
                         player2.y = 400;
+                        collideSound.Play();
                     }
                 }
             }
@@ -228,13 +235,15 @@ namespace SpaceRaceGame
                     if (asterRec.IntersectsWith(player1Rec))
                     {
                         player1.x = 138;
-                        player1.y = 400;
+                        player1.y = 400; 
+                        collideSound.Play();
                     }
 
                     if (asterRec.IntersectsWith(player2Rec))
                     {
                         player2.x = 414;
                         player2.y = 400;
+                        collideSound.Play();
                     }
                 }
             }
@@ -266,6 +275,8 @@ namespace SpaceRaceGame
             {
                 victoryLabel.Text = "Player 2 Wins";
             }
+
+            winSound.Play();
 
             endButton.Visible = true;
             endButton.Enabled = true;

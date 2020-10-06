@@ -70,6 +70,7 @@
             this.BackColor = System.Drawing.Color.Black;
             this.Controls.Add(this.endButton);
             this.Controls.Add(this.victoryLabel);
+            this.DoubleBuffered = true;
             this.Name = "GameScreen";
             this.Size = new System.Drawing.Size(688, 489);
             this.Load += new System.EventHandler(this.GameScreen_Load);
